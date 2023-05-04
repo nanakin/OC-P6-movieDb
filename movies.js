@@ -1,4 +1,6 @@
 
+import {createModal} from "./modal.js"
+
 const API_URL = "http://localhost:8000/api/v1/";
 const NB_CATEGORIES = 3;  //genre or category ?
 const NB_TITLES_PER_CATEGORY = 7; // title or movie or film ?
@@ -71,15 +73,25 @@ function createElements(elements, key){
 
     const h2 = document.createElement("h2")
     h2.innerText = key == "bestTitle" ? "Best Title" : genres[key]
-    section.appendChild(h2)
+    section.appendChild(h2);
 
-    const ul = document.createElement("ul");
+    const container = document.createElement("div");
     for (const id_element in elements){
-        const li = document.createElement("li");
-        li.innerText = elements[id_element].title + " (" + elements[id_element].imdb_score + ")";
-        ul.appendChild(li);
+        const div = document.createElement("div");
+        div.innerText = elements[id_element].title;
+        div.className = "clickable";
+        div.onclick = function() {
+            document.getElementById("movieDescription").innerHTML = div.nextElementSibling.innerHTML
+            modal.style.display = "block";
+        }
+
+        container.appendChild(div);
+        const description = document.createElement("div");
+        description.className = "description"
+        description.innerText = elements[id_element].title + " (" + elements[id_element].imdb_score + ")";
+        container.appendChild(description);
     }
-    section.appendChild(ul)
+    section.appendChild(container)
 
     document.querySelector("main").appendChild(section);
 }
@@ -114,6 +126,7 @@ function makeGETRequest(requestObj, url){
 }
 
 console.log("hello");
+const modal = createModal()
 makeGETRequest(requests.genres, API_URL + "genres");
 //makeRequestTitles(API_URL + "titles/?sort_by=-imdb_score");
 console.log("after make request");
