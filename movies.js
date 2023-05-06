@@ -4,7 +4,7 @@ import {createModal} from "./modal.js"
 const API_URL = "http://localhost:8000/api/v1/";
 const NB_CATEGORIES = 3;  //genre or category ?
 const NB_TITLES_PER_CATEGORY = 7; // title or movie or film ?
-
+const NB_VISIBLE_TITLES = 4;
 // version sans ajax
 // utiliser un then avec : getGenres().then((genres) => console.log(genres))
 // async function getGenres(filters){
@@ -65,6 +65,32 @@ function getGenres(){
       }
 }
 
+function moveSlideshow(event){
+    const direction =  event.target.className.includes("next") ? 1 : -1;
+    const movies = event.target.parentElement.getElementsByClassName("clickable");
+    for (var visibleFromPosition = 0; (visibleFromPosition < movies.length) && 
+        (movies[visibleFromPosition].style.display == "none"); visibleFromPosition++) {}
+    if (direction == 1){ // next
+        if ((movies.length - visibleFromPosition) > NB_VISIBLE_TITLES) {
+            movies[visibleFromPosition].style.display = "none";
+            movies[visibleFromPosition + NB_VISIBLE_TITLES].style.display = "inline";
+            event.target.parentElement.getElementsByClassName("previous")[0].style.visibility = "visible";
+            if (visibleFromPosition + 1 + NB_VISIBLE_TITLES ==  movies.length){
+                event.target.style.visibility = "hidden";}
+        }
+    }
+    else { // previous
+        if ((visibleFromPosition + NB_VISIBLE_TITLES - 1) >= NB_VISIBLE_TITLES){
+            movies[visibleFromPosition + NB_VISIBLE_TITLES - 1].style.display = "none";
+            event.target.parentElement.getElementsByClassName("next")[0].style.visibility = "visible";
+            movies[visibleFromPosition - 1].style.display = "inline";
+            if (visibleFromPosition - 1 == 0){
+                event.target.style.visibility = "hidden";
+            }
+        }
+    }
+}
+
 function createElements(elements, key){
     console.log("elements =");
     console.log(elements);
@@ -75,23 +101,53 @@ function createElements(elements, key){
     h2.innerText = key == "bestTitle" ? "Best Title" : genres[key]
     section.appendChild(h2);
 
+    const slideshow = document.createElement("div");
+    slideshow.className = "slideshow";
+    const next = document.createElement("a");
+    next.onclick = moveSlideshow;
+    next.className = "arrow";
+    next.innerText = "›";
+    const previous = next.cloneNode()
+    previous.onclick = moveSlideshow;
+    next.className += " next"
+    if (Object.keys(elements).length < NB_VISIBLE_TITLES){
+        next.style.visibility = "hidden";
+    }
+    previous.className += " previous"
+    previous.innerText = "‹";
+    previous.style.visibility = "hidden";
+    slideshow.appendChild(previous);
+    slideshow.appendChild(next);
+    section.appendChild(slideshow);
+    
+
     const container = document.createElement("div");
+    container.className = "container"
+    let i = 0;
     for (const id_element in elements){
-        const div = document.createElement("div");
-        div.innerText = elements[id_element].title;
-        div.className = "clickable";
-        div.onclick = function() {
-            document.getElementById("movieDescription").innerHTML = div.nextElementSibling.innerHTML
+        const movieDiv = document.createElement("div");
+        if (i >= NB_VISIBLE_TITLES) {
+            movieDiv.style.display = "none";
+        }
+        movieDiv.className = "clickable";
+        movieDiv.innerText = elements[id_element].title;
+        movieDiv.onclick = function() {
+            document.getElementById("movieDescription").innerHTML = movieDiv.nextElementSibling.innerHTML
             modal.style.display = "block";
         }
 
-        container.appendChild(div);
+        const img = document.createElement("img");
+        img.src = elements[id_element].image_url;
+        movieDiv.appendChild(img)
+
+        container.appendChild(movieDiv);
         const description = document.createElement("div");
         description.className = "description"
         description.innerText = elements[id_element].title + " (" + elements[id_element].imdb_score + ")";
         container.appendChild(description);
+        i++;
     }
-    section.appendChild(container)
+    slideshow.insertBefore(container, next)
 
     document.querySelector("main").appendChild(section);
 }
