@@ -16,7 +16,6 @@ a:hover{
     border: 1px solid violet;
     justify-content: space-around;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* grid-row: 1; */
 }
 
 .slideshow {
@@ -39,7 +38,7 @@ h1 {
     width: 200px;
     padding: 15px;
 }
-img:hover {
+.slideshow img:hover {
     opacity: 0.5;
 }
 img:hover + .category {
@@ -105,4 +104,36 @@ p {color: green;}
     color: black;
     text-decoration: none;
     cursor: pointer;
+  } 
+/* ----------------------button over image --------------------------*/
+  /* Container needed to position the button. Adjust the width as needed */
+  .best {
+    position: relative;
+    width: 50%;
+  }
+  
+  /* Make the image responsive */
+  .best img {
+    /*width: 100%;*/
+    height: auto;
+  }
+  
+  /* Style the button and place it in the middle of the container/image */
+  .best .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .best .btn:hover {
+    background-color: black;
   } 

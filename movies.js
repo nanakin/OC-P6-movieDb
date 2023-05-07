@@ -28,7 +28,7 @@ requests.genres.onreadystatechange = getGenres;
 requests.movieDetails = new XMLHttpRequest();
 requests.movieDetails.onreadystatechange = fillMovieDetails;
 requests.bestTitle =  new XMLHttpRequest();
-requests.bestTitle.onreadystatechange = function(){getTitles(requests.bestTitle, "bestTitle", 1);};
+requests.bestTitle.onreadystatechange = function(){getTitles(requests.bestTitle, "bestTitle", NB_TITLES_PER_CATEGORY);};
 requests.titlesByGenre = {};
 
 // make only on data variable ?
@@ -122,14 +122,53 @@ function getMovieDetails(id){
     makeGETRequest(requests.movieDetails, url);
 }
 
+function fillBestMovieData(){
+    if (requests.movieDetails.readyState === XMLHttpRequest.DONE) {
+        if (requests.movieDetails.status === 200) {
+            const movieData = JSON.parse(requests.movieDetails.responseText);
+            const element = movieData;
+            const divBestMovie = document.createElement("div");
+            divBestMovie.className = "best";
+            const titleBestMovie = document.createElement("h3")
+            titleBestMovie.innerText = element.title;
+            divBestMovie.appendChild(titleBestMovie);
+            const imgBestMovie = document.createElement("img");
+            imgBestMovie.src = element.image_url;
+            divBestMovie.appendChild(imgBestMovie);
+            const buttonPlay = document.createElement("button");
+            buttonPlay.className = "btn";
+            buttonPlay.innerText = "Play";
+            divBestMovie.appendChild(buttonPlay);
+            const descriptionBestMovie = document.createElement("p")
+            descriptionBestMovie.innerText = element.description;
+            divBestMovie.appendChild(descriptionBestMovie)
+            document.getElementById("best_title").appendChild(divBestMovie);
+            requests.movieDetails.onreadystatechange = fillMovieDetails;
+        }
+    }
+}
+
 function createElements(elements, key){
     console.log("elements =");
     console.log(elements);
 
-    const section = document.createElement("section");
+    let section = document.createElement("section");
 
-    const h2 = document.createElement("h2")
-    h2.innerText = key == "bestTitle" ? "Best Title" : genres[key]
+    let h2 = document.createElement("h2")
+    if (key == "bestTitle"){
+        h2.innerText = "Best Title";
+        section.appendChild(h2);
+        section.id = "best_title";
+        for (var id_element in elements){break;}
+        requests.movieDetails.onreadystatechange = fillBestMovieData;
+        getMovieDetails(id_element); 
+        document.querySelector("main").appendChild(section);
+        section = document.createElement("section");
+        h2 = document.createElement("h2")
+        h2.innerText = "Best Titles";
+    } else {
+        h2.innerText = genres[key]
+    }
     section.appendChild(h2);
 
     const slideshow = document.createElement("div");
