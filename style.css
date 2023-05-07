@@ -1,71 +1,107 @@
 
 body {
-    background: linear-gradient(90deg, #8360c3, #2ebf91);
-    width: 1000px;
-    margin: auto;
+    background: #F5F5F5;
+    margin: 0% 20%; /* to be replaced */
+    font-family: 'Nunito', 'Roboto', sans-serif;
 }
+
+header {
+    width: 100%;
+    background: #778899;
+    color: #F5F5F5;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    text-align: center; /* center horizontally */
+    align-items: center; /* center vertically */
+}
+h1, header img{
+    display: inline-block; /* title and logo on the same line */
+    vertical-align: middle; /* center vertically the logo */
+}
+
+header img { 
+    width: 50px;
+    margin-left: 10px;
+}
+nav {
+    display: inline;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    padding: 20px 20px;
+}
+
 a {
     text-decoration: none;
-    color: pink;
 }
-a:hover{
-    color: aqua;
+
+nav a:visited, nav a:link, nav a:active {
+    color: #F5F5F5;
+}
+
+nav a:hover{
+    color: #333c44;
+}
+
+section, header{
+    margin-bottom: 40px;
+}
+
+#best_title > div {
+    color: #F5F5F5;;
+    width: auto; /* full width */
+    background-color: #333c44;
+    border: 2px solid #555;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#best_title > div > div {
+    padding: 20px;
+}
+#best_title > div > img {
+    margin: auto; /* center horizontally */
 }
 .container {
     display: grid;
-    border: 1px solid violet;
-    justify-content: space-around;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .slideshow {
-    border : 1px solid yellow;
+    min-width: 840px;
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: 50px 1fr 50px;
+}
+.clickable {
+    text-align: center; /* horizontal center */
 }
 
 .arrow {
     display: block;
-    /* width: 20px; */
+    margin: auto;
+    padding: 40%;
+    background-color: #778899;
+    color: white;
+    font-size: 180%;
 }
 
-h1 {
-    opacity: 0.5;
-    border: 2px double orange;
-    text-align: center;
-    border-radius: 10%;
-    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.5);
-    width: 200px;
-    padding: 15px;
+.arrow:hover {
+    background-color: black;
 }
+
 .slideshow img:hover {
     opacity: 0.5;
 }
-img:hover + .category {
-    color: greenyellow;
-    outline-color: #2ebf91;
-    border-color: purple;
-}
-h2 {
-    border-left: 2px solid blueviolet;
-    padding: 10px;
-    background-color: pink;
-    width: 250px;
-    text-align: center;
-    margin: auto;
-}
-.category{
-    border-bottom: 2px solid gray;
-}
-p mark {color: purple}
-p {color: green;}
-.special {
-    color: pink;
-    font-size: large;
-}
 
-.description {
-    display: none;
+h2 {
+    padding: 20px;
+    text-align: center; /* center horizontally titles */
 }
 
  /* The Modal (background) --------------------------------------*/
@@ -105,35 +141,16 @@ p {color: green;}
     text-decoration: none;
     cursor: pointer;
   } 
-/* ----------------------button over image --------------------------*/
-  /* Container needed to position the button. Adjust the width as needed */
-  .best {
-    position: relative;
-    width: 50%;
-  }
-  
-  /* Make the image responsive */
-  .best img {
-    /*width: 100%;*/
-    height: auto;
-  }
-  
-  /* Style the button and place it in the middle of the container/image */
-  .best .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+
+  .btn {
     background-color: #555;
     color: white;
-    font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    padding:  15px 20px;
   }
   
-  .best .btn:hover {
+  .btn:hover {
     background-color: black;
   } 

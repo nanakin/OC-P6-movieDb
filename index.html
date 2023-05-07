@@ -3,12 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>JustStreamIt</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
         <script type="module" src="movies.js"></script>
     </head>
     <body>
         <header>
-            <h1>JustStreamIt</h1>
+            <div>
+                <h1>JustStreamIt</h1>
+                <img src="logo.png">
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
@@ -17,27 +23,13 @@
             </nav>
         </header>
         <main>
-            <!-- options possibles pour les balises a : target="_blank", href="mailto:truc@mail.fr", href="bla.txt"-->
-            <!--<img src="https://user.oc-static.com/upload/2020/09/18/16004298163529_P5.png" alt="logo du site" title="logo"> -->
-            <!-- possible de mettre une balise <a> avec un href vers une image meilleure qualité en 
-                mettant la balise autour de l’image avec la source en miniature pour l’afficher en plein écran.-->
-            <!-- <article> si partie autonome (a mettre dans le main dans section ?)-->
-            <p>un paragraphe avec <mark>mark</mark>, <em>em</em> et <strong>strong</strong>. 
-                <br> Et un <span class="special"> de ligne</span> dans le paragraphe lui-même.</p>
-
-             <!-- Trigger/Open The Modal -->
-            <button id="myBtn">Open Modal</button>
-
             <!-- The Modal -->
             <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="movie_description"></div>
-            </div>
-
-</div> 
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="movie_description"></div>
+                </div>
+            </div> 
         </main>
         <footer>le footer</footer>
     </body>

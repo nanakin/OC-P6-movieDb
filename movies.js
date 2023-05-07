@@ -128,21 +128,22 @@ function fillBestMovieData(){
             const movieData = JSON.parse(requests.movieDetails.responseText);
             const element = movieData;
             const divBestMovie = document.createElement("div");
-            divBestMovie.className = "best";
-            const titleBestMovie = document.createElement("h3")
+            const divInfo = document.createElement("div");
+            const titleBestMovie = document.createElement("h3");
             titleBestMovie.innerText = element.title;
-            divBestMovie.appendChild(titleBestMovie);
+            divInfo.append(titleBestMovie);
             const imgBestMovie = document.createElement("img");
             imgBestMovie.src = element.image_url;
-            divBestMovie.appendChild(imgBestMovie);
             const buttonPlay = document.createElement("button");
             buttonPlay.className = "btn";
             buttonPlay.innerText = "Play";
-            divBestMovie.appendChild(buttonPlay);
+            divInfo.append(buttonPlay);
             const descriptionBestMovie = document.createElement("p")
             descriptionBestMovie.innerText = element.description;
-            divBestMovie.appendChild(descriptionBestMovie)
-            document.getElementById("best_title").appendChild(divBestMovie);
+            divInfo.append(descriptionBestMovie)
+            divBestMovie.append(divInfo);
+            divBestMovie.append(imgBestMovie);
+            document.getElementById("best_title").append(divBestMovie);
             requests.movieDetails.onreadystatechange = fillMovieDetails;
         }
     }
@@ -200,7 +201,7 @@ function createElements(elements, key){
             movieDiv.style.display = "none";
         }
         movieDiv.className = "clickable";
-        movieDiv.innerText = elements[id_element].title;
+        //movieDiv.innerText = elements[id_element].title;
         movieDiv.onclick = function() {
             getMovieDetails(id_element);
             //document.getElementById("movieDescription").innerHTML = movieDiv.nextElementSibling.innerHTML
