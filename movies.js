@@ -25,6 +25,8 @@ var requests = {}
 
 requests.genres =  new XMLHttpRequest();
 requests.genres.onreadystatechange = getGenres;
+requests.movieDetails = new XMLHttpRequest();
+requests.movieDetails.onreadystatechange = fillMovieDetails;
 requests.bestTitle =  new XMLHttpRequest();
 requests.bestTitle.onreadystatechange = function(){getTitles(requests.bestTitle, "bestTitle", 1);};
 requests.titlesByGenre = {};
@@ -91,6 +93,35 @@ function moveSlideshow(event){
     }
 }
 
+function fillMovieDetails(){
+    if (requests.movieDetails.readyState === XMLHttpRequest.DONE) {
+        if (requests.movieDetails.status === 200) {
+            const movieData = JSON.parse(requests.movieDetails.responseText);
+            console.log(movieData);
+            const descriptionDiv = document.getElementById("movie_description");
+            descriptionDiv.innerText = (
+                movieData.image_url +
+                movieData.title +
+                movieData.genres +
+                movieData.date_published +
+                movieData.rated +
+                movieData.imdb_score +
+                movieData.directors +
+                movieData.actors +
+                movieData.duration +
+                movieData.countries +
+                movieData.worldwide_gross_income +
+                movieData.description);
+            modal.style.display = "block";
+        }
+    }
+}
+
+function getMovieDetails(id){
+    const url = API_URL + "titles/" + id;
+    makeGETRequest(requests.movieDetails, url);
+}
+
 function createElements(elements, key){
     console.log("elements =");
     console.log(elements);
@@ -132,19 +163,21 @@ function createElements(elements, key){
         movieDiv.className = "clickable";
         movieDiv.innerText = elements[id_element].title;
         movieDiv.onclick = function() {
-            document.getElementById("movieDescription").innerHTML = movieDiv.nextElementSibling.innerHTML
-            modal.style.display = "block";
+            getMovieDetails(id_element);
+            //document.getElementById("movieDescription").innerHTML = movieDiv.nextElementSibling.innerHTML
         }
 
+        const movieData = elements[id_element]
+
         const img = document.createElement("img");
-        img.src = elements[id_element].image_url;
+        img.src = movieData.image_url;
         movieDiv.appendChild(img)
+        
 
         container.appendChild(movieDiv);
-        const description = document.createElement("div");
+        /*const description = document.createElement("div");
         description.className = "description"
-        description.innerText = elements[id_element].title + " (" + elements[id_element].imdb_score + ")";
-        container.appendChild(description);
+        container.appendChild(description);*/
         i++;
     }
     slideshow.insertBefore(container, next)
