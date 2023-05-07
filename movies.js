@@ -162,7 +162,7 @@ function createElements(elements, key){
         for (var id_element in elements){break;}
         requests.movieDetails.onreadystatechange = fillBestMovieData;
         getMovieDetails(id_element); 
-        document.querySelector("main").appendChild(section);
+        document.querySelector("main").prepend(section);
         section = document.createElement("section");
         h2 = document.createElement("h2")
         h2.innerText = "Best Titles";
@@ -221,7 +221,17 @@ function createElements(elements, key){
     }
     slideshow.insertBefore(container, next)
 
-    document.querySelector("main").appendChild(section);
+    const main = document.querySelector("main")
+    if (key == "bestTitle"){
+        const sections = document.getElementsByTagName("section")
+        if (sections.length > 1){
+            main.insertBefore(section, sections[1])
+        } else {
+            main.append(section);
+        }
+    } else {
+        main.append(section);
+    }
 }
 
 
