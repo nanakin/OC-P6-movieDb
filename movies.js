@@ -134,6 +134,8 @@ function fillBestMovieData(){
             divInfo.append(titleBestMovie);
             const imgBestMovie = document.createElement("img");
             imgBestMovie.src = element.image_url;
+            imgBestMovie.onclick = function() {
+                getMovieDetails(movieData.id);}
             const buttonPlay = document.createElement("button");
             buttonPlay.className = "btn";
             buttonPlay.innerText = "Play";

@@ -95,7 +95,7 @@ section, header{
     background-color: black;
 }
 
-.slideshow img:hover {
+.slideshow img:hover, #best_title img:hover {
     opacity: 0.5;
 }
 
