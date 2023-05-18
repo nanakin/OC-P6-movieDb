@@ -34,7 +34,12 @@ function getGenres () {
         titles.bestTitle = {};
         makeGETRequest(requests.bestTitle, API_URL + 'titles/?sort_by=-imdb_score');
         const selectedCategoriesID = [3, 5, 17]; // crime, history and sport
+        const nav = document.getElementsByClassName('dropdown-content')[0];
         for (const categoryID of selectedCategoriesID) {
+          const categoryAnchorLink = document.createElement('a');
+          categoryAnchorLink.href = '?#' + categoryID;
+          categoryAnchorLink.innerHTML = genres[categoryID];
+          nav.append(categoryAnchorLink);
           titles[categoryID] = {};
           requests.titlesByGenre[categoryID] = new XMLHttpRequest();
           requests.titlesByGenre[categoryID].onreadystatechange = function () { getTitles(requests.titlesByGenre[categoryID], categoryID, NB_TITLES_PER_CATEGORY); };
@@ -154,9 +159,9 @@ function createElements (elements, key) {
     h2.innerText = 'Best Titles';
   } else {
     h2.innerText = genres[key];
+    section.id = key;
   }
   section.append(h2);
-
   const slideshow = document.createElement('div');
   slideshow.className = 'slideshow';
   const next = document.createElement('a');
