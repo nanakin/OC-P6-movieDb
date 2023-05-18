@@ -82,20 +82,20 @@ function fillMovieDetails () {
   if (requests.movieDetails.readyState === XMLHttpRequest.DONE) {
     if (requests.movieDetails.status === 200) {
       const movieData = JSON.parse(requests.movieDetails.responseText);
-      const descriptionDiv = document.getElementById('movie_description');
-      descriptionDiv.innerText = (
-        movieData.image_url +
-                movieData.title +
-                movieData.genres +
-                movieData.date_published +
-                movieData.rated +
-                movieData.imdb_score +
-                movieData.directors +
-                movieData.actors +
-                movieData.duration +
-                movieData.countries +
-                movieData.worldwide_gross_income +
-                movieData.description);
+      document.getElementById('title').innerText = movieData.title;
+      const movieImage = document.getElementById('cover');
+      movieImage.src = movieData.image_url;
+      movieImage.alt = movieData.title;
+      document.getElementById('genres').innerText = movieData.genres.join(', ');
+      document.getElementById('date').innerText = movieData.date_published;
+      document.getElementById('rated').innerText = movieData.rated;
+      document.getElementById('imdb').innerText = movieData.imdb_score;
+      document.getElementById('directors').innerText = movieData.directors.join(', ');
+      document.getElementById('actors').innerText = movieData.actors.join(', ');
+      document.getElementById('duration').innerText = movieData.duration;
+      document.getElementById('countries').innerText = movieData.countries.join(', ');
+      document.getElementById('income').innerText = movieData.worldwide_gross_income;
+      document.getElementById('description').innerText = movieData.description;
       modal.style.display = 'block';
     }
   }

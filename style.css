@@ -120,13 +120,41 @@ h2 {
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background: #778899;
+    color: #F5F5F5;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
+
+#movie_description ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+#movie_description ul li, #movie_description h3 {
+    margin: 20px;
+}
+
+.details-part {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.cover-part {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+
+h4 {
+    display: inline;
+    padding: 0 10px 0 0;
+}
+
   /* The Close Button */
   .close {
     color: #aaa;
