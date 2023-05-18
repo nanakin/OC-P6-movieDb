@@ -78,8 +78,13 @@ section, header{
     display: grid;
     grid-template-columns: 50px 1fr 50px;
 }
-.clickable {
+
+.container div{
     text-align: center; /* horizontal center */
+}
+
+.clickable, .arrow {
+    cursor: pointer;
 }
 
 .arrow {

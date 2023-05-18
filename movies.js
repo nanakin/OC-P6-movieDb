@@ -117,6 +117,7 @@ function fillBestMovieData () {
       titleBestMovie.innerText = element.title;
       divInfo.append(titleBestMovie);
       const imgBestMovie = document.createElement('img');
+      imgBestMovie.className = 'clickable';
       imgBestMovie.src = element.image_url;
       imgBestMovie.alt = element.title;
       imgBestMovie.onclick = function () {
