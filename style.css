@@ -4,7 +4,6 @@ body {
     margin: 0% 20%; /* to be replaced */
     font-family: 'Nunito', 'Roboto', sans-serif;
 }
-
 header {
     width: 100%;
     background: #778899;
@@ -23,6 +22,19 @@ header img {
     width: 50px;
     margin-left: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+    body {
+        margin: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    header img {
+        display: none;
+    }
+}
+
+
 nav {
     display: inline;
 }
@@ -81,6 +93,13 @@ section, header{
     min-width: 840px;
     display: grid;
     grid-template-columns: 50px 1fr 50px;
+}
+@media screen and (max-width: 839px) {
+    .slideshow{
+    min-width: auto;}
+    .clickable img{
+        width: 75%;
+    }
 }
 
 .container div{
@@ -180,7 +199,7 @@ h4 {
   } 
 
   .btn {
-    background-color: #555;
+    background-color: #ff3333;
     color: white;
     border: none;
     cursor: pointer;
