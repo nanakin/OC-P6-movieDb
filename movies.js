@@ -33,7 +33,7 @@ function getGenres () {
       } else {
         titles.bestTitle = {};
         makeGETRequest(requests.bestTitle, API_URL + 'titles/?sort_by=-imdb_score');
-        const selectedCategoriesID = getSelectedCategories();
+        const selectedCategoriesID = [3, 5, 17]; // crime, history and sport
         for (const categoryID of selectedCategoriesID) {
           titles[categoryID] = {};
           requests.titlesByGenre[categoryID] = new XMLHttpRequest();
@@ -243,16 +243,3 @@ function makeGETRequest (requestObj, url) {
 
 const modal = createModal();
 makeGETRequest(requests.genres, API_URL + 'genres');
-
-// select 3 categories randomly
-function getSelectedCategories () {
-  const selectedGenresID = [];
-  const genresID = Object.keys(genres);
-  do {
-    const random = Math.floor(Math.random() * genresID.length);
-    if (!selectedGenresID.includes(genresID[random])) {
-      selectedGenresID.push(genresID[random]);
-    }
-  } while (selectedGenresID.length < 3);
-  return selectedGenresID;
-}
