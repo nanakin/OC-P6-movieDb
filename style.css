@@ -27,6 +27,10 @@ nav {
     display: inline;
 }
 
+.brand {
+    padding-left: 20px;
+}
+
 nav ul {
     padding: 0;
 }
