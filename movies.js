@@ -102,6 +102,7 @@ function fillMovieDetails () {
       document.getElementById('income').innerText = movieData.worldwide_gross_income;
       document.getElementById('description').innerText = movieData.description;
       modal.style.display = 'block';
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
     }
   }
 }
