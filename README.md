@@ -22,7 +22,7 @@ The main page displays :
 The application : 
 - is using Vanilla JavaScrip (no framework) to retreive data from the API and to display dynamic content,
 - is valid W3C HTML and W3C CSS,
-- is responsive (mobile-friendly).
+- is comptatible with small screens.
 
 ### Screenshot
 <img src="https://github.com/nanakin/OC-P2-scrap/assets/14202917/d4623c56-481d-4747-8c85-ed862d51016e" alt="juststreamit screenshot" width="640"/>
