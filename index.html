@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>JustStreamIt</title>
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
-        <script type="module" src="movies.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="brand">
-                <h1>JustStreamIt</h1>
-                <img src="/images/logo-small.png" alt="logo of JustStreamIt">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li class="dropdown"><span class="dropbtn">Catégories</span>
-                    <div class="dropdown-content"></div></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div id="movie_description">
-                        <h3 id="title">Movie Title</h3>
-                        <ul class="cover-part">
-                            <li><img id="cover" src="" alt="cover"></li>
-                            <li><h4>Description</h4><br><span id="description"></span></li>
-                        </ul>
-                        <ul class="details-part">
-                            <li><h4>Genre(s):</h4><span id="genres"></span></li>
-                            <li><h4>Published Date:</h4><span id="date"></span></li>
-                            <li><h4>Rated:</h4><span id="rated"></span></li>
-                            <li><h4>Imdb Score:</h4><span id="imdb"></span></li>
-                            <li><h4>Duration:</h4><span id="duration"></span></li>
-                            <li><h4>Country(ies):</h4><span id="countries"></span></li>
-                            <li><h4>Income:</h4><span id="income"></span></li>
-                            <li><h4>Director(s):</h4><span id="directors"></span></li>
-                            <li><h4>Actor(s):</h4><span id="actors"></span></li>
-                        </ul>
-                    </div>
+
+<head>
+    <meta charset="utf-8">
+    <title>JustStreamIt</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script type="module" src="movies.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <h1>JustStreamIt</h1>
+            <img src="/images/logo-small.png" alt="logo of JustStreamIt">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <span class="dropbtn">Catégories</span>
+                    <span class="dropdown-content"></span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="movie_description">
+                    <h3 id="title">Movie Title</h3>
+                    <ul class="cover-part">
+                        <li><img id="cover" src="" alt="cover"></li>
+                        <li><h4>Description</h4><br><span id="description"></span></li>
+                    </ul>
+                    <ul class="details-part">
+                        <li><h4>Genre(s):</h4><span id="genres"></span></li>
+                        <li><h4>Published Date:</h4><span id="date"></span></li>
+                        <li><h4>Rated:</h4><span id="rated"></span></li>
+                        <li><h4>Imdb Score:</h4><span id="imdb"></span></li>
+                        <li><h4>Duration:</h4><span id="duration"></span></li>
+                        <li><h4>Country(ies):</h4><span id="countries"></span></li>
+                        <li><h4>Income:</h4><span id="income"></span></li>
+                        <li><h4>Director(s):</h4><span id="directors"></span></li>
+                        <li><h4>Actor(s):</h4><span id="actors"></span></li>
+                    </ul>
                 </div>
-            </div> 
-        </main>
-        <footer>
-        </footer>
-    </body>
+            </div>
+        </div>
+    </main>
+</body>
+
 </html>
